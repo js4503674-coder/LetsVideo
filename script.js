@@ -12,6 +12,13 @@ let videos = [
     "video": "https://ia800603.us.archive.org/22/items/blood_202607/BLOOD%21%21%21.mp4",
     "thumbnail": "favicon.png",
     "tags": ["roblox", "rivals", "edit", "blood", "horror"]
+  },
+  {
+    "name": "Miss You",
+    "creator": "The Last Phantom",
+    "video": "https://ia600901.us.archive.org/15/items/edit-3-motion-complete/Edit%203%20%28Motion%20-%20Complete%29.mp4",
+    "thumbnail": "favicon.png",
+    "tags": ["roblox", "rivals", "edit"]
   }
 ];
 
