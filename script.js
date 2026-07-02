@@ -1,15 +1,17 @@
 let videos = [
   {
-    name: "Rivals Edit",
-    creator: "xXSillyBillyXx",
-    video: "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
-    thumbnail: "https://via.placeholder.com/120x70.png?text=Rivals"
+    "name": "Rivals Edit",
+    "creator": "xXSillyBillyXx",
+    "video": "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
+    "thumbnail": "Rivals Edit.png",
+    "tags": ["roblox", "rivals", "edit"]
   },
   {
-    name: "BLOOD!!!",
-    creator: "xXSillyBillyXx",
-    video: "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
-    thumbnail: "https://via.placeholder.com/120x70.png?text=BLOOD"
+    "name": "BLOOD!!!",
+    "creator": "xXSillyBillyXx",
+    "video": "https://ia800603.us.archive.org/22/items/blood_202607/BLOOD%21%21%21.mp4",
+    "thumbnail": "Rivals Edit.png",
+    "tags": ["roblox", "rivals", "edit", "blood", "horror"]
   }
 ];
 
