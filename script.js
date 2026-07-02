@@ -3,14 +3,14 @@ let videos = [
     "name": "Rivals Edit",
     "creator": "The Last Phantom",
     "video": "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
-    "thumbnail": "Rivals Edit.png",
+    "thumbnail": "favicon.png",
     "tags": ["roblox", "rivals", "edit"]
   },
   {
     "name": "BLOOD!!!",
     "creator": "The Last Phantom",
     "video": "https://ia800603.us.archive.org/22/items/blood_202607/BLOOD%21%21%21.mp4",
-    "thumbnail": "Rivals Edit.png",
+    "thumbnail": "favicon.png",
     "tags": ["roblox", "rivals", "edit", "blood", "horror"]
   }
 ];
