@@ -1,80 +1,69 @@
-let allVideos = [];
+let videos = [
+  {
+    name: "Rivals Edit",
+    creator: "xXSillyBillyXx",
+    video: "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
+    thumbnail: "https://via.placeholder.com/120x70.png?text=Rivals"
+  },
+  {
+    name: "BLOOD!!!",
+    creator: "xXSillyBillyXx",
+    video: "https://ia903108.us.archive.org/3/items/rivals-edit/Rivals%20Edit.mp4",
+    thumbnail: "https://via.placeholder.com/120x70.png?text=BLOOD"
+  }
+];
 
+// ELEMENTS
 const player = document.getElementById("player");
 const title = document.getElementById("title");
-const creatorText = document.getElementById("creator");
-const grid = document.getElementById("grid");
+const creator = document.getElementById("creator");
+const sidebar = document.getElementById("sidebar");
 const search = document.getElementById("search");
-const sectionTitle = document.getElementById("sectionTitle");
 
-// LOAD JSON
-fetch("videos.json")
-  .then(res => res.json())
-  .then(data => {
-    allVideos = data;
-
-    renderVideos(allVideos);
-
-    if (allVideos.length > 0) {
-        loadVideo(allVideos[0]);
-    }
-  });
-
-// LOAD VIDEO (STREAMABLE EMBED)
+// LOAD VIDEO INTO PLAYER
 function loadVideo(video) {
-    player.src = video.video; // MUST be /e/ link
+  player.src = video.video;
+  player.load();
+  player.play();
 
-    title.innerText = video.name;
-
-    creatorText.innerText = video.creator
-        ? `Created by ${video.creator}`
-        : "";
+  title.innerText = video.name;
+  creator.innerText = "Created by " + video.creator;
 }
 
-// RENDER LIST (HOME + SEARCH)
-function renderVideos(videos) {
-    grid.innerHTML = "";
+// RENDER SIDEBAR VIDEOS
+function renderSidebar(list) {
+  sidebar.innerHTML = "";
 
-    videos.forEach(v => {
-        const card = document.createElement("div");
-        card.className = "card";
+  list.forEach(video => {
+    const item = document.createElement("div");
+    item.className = "video-item";
 
-        card.innerHTML = `
-            <img src="${v.thumbnail}">
+    item.innerHTML = `
+      <img src="${video.thumbnail}">
+      <div class="info">
+        <h4>${video.name}</h4>
+        <p>${video.creator}</p>
+      </div>
+    `;
 
-            <div class="card-text">
-                <p class="card-title">${v.name}</p>
-                <p class="card-creator">${v.creator || ""}</p>
-            </div>
-        `;
+    item.onclick = () => loadVideo(video);
 
-        card.onclick = () => loadVideo(v);
-
-        grid.appendChild(card);
-    });
+    sidebar.appendChild(item);
+  });
 }
 
-// SEARCH (NAME + TAGS)
+// SEARCH FUNCTION
 search.addEventListener("input", () => {
-    const query = search.value.toLowerCase().trim();
+  const query = search.value.toLowerCase();
 
-    if (query === "") {
-        sectionTitle.innerText = "Home";
-        renderVideos(allVideos);
-        return;
-    }
+  const filtered = videos.filter(v =>
+    v.name.toLowerCase().includes(query) ||
+    v.creator.toLowerCase().includes(query)
+  );
 
-    const results = allVideos.filter(v => {
-        const nameMatch = v.name.toLowerCase().includes(query);
-
-        const tagMatch = v.tags?.some(tag =>
-            tag.toLowerCase().includes(query)
-        );
-
-        return nameMatch || tagMatch;
-    });
-
-    sectionTitle.innerText = `Search: "${query}"`;
-
-    renderVideos(results);
+  renderSidebar(filtered);
 });
+
+// INIT PAGE
+renderSidebar(videos);
+loadVideo(videos[0]);
